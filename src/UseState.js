@@ -12,27 +12,45 @@ function UseState({ name }) {
     confirmed: false,
   });
 
-  console.log(state);
+  const onConfirm = () => {
+    setState({ ...state, loading: false, confirmed: true, error: false });
+  };
+
+  const onError = () => {
+    setState({ ...state, loading: false, error: true });
+  };
+
+  const onWrite = (event) => {
+    setState({ ...state, value: event.target.value });
+  };
+
+  const onCheck = () => {
+    console.log(state);
+
+    setState({ ...state, loading: true });
+  };
+
+  const onDelete = () => {
+    setState({ ...state, deleted: true });
+  };
+
+  const onReset = () => {
+    setState({ ...state, confirmed: false, deleted: false, value: "" });
+  };
 
   React.useEffect(() => {
     if (!!state.loading) {
       setTimeout(() => {
         if (state.value === SECURITY_CODE) {
-          //setLoading(false);
-          setState({ ...state, loading: false, confirmed: true });
-          if (!!state.error) {
-            //setError(false);
-            setState({ ...state, error: false });
-          }
+          onConfirm();
         } else {
-          //setLoading(false);
-          //setError(true);
-          setState({ ...state, loading: false, error: true });
+          onError();
         }
       }, 3000);
     }
   }, [state.loading]);
 
+  /* Initial State */
   if (!state.deleted && !state.confirmed) {
     return (
       <div>
@@ -48,14 +66,12 @@ function UseState({ name }) {
           placeholder="Código de seguridad"
           value={state.value}
           onChange={(event) => {
-            //setValue(event.target.value);
-            setState({ ...state, value: event.target.value });
+            onWrite(event);
           }}
         />
         <button
           onClick={() => {
-            //setLoading(true);
-            setState({ ...state, loading: true });
+            onCheck();
           }}
           type="button"
         >
@@ -63,6 +79,7 @@ function UseState({ name }) {
         </button>
       </div>
     );
+    /* Right Security Word but not deleted yet */
   } else if (!state.deleted && !!state.confirmed) {
     return (
       <React.Fragment>
@@ -70,14 +87,14 @@ function UseState({ name }) {
         <p>¿Está seguro que desea eliminar Use State?</p>
         <button
           onClick={() => {
-            setState({ ...state, deleted: true });
+            onDelete();
           }}
         >
           Si, eliminar
         </button>
         <button
           onClick={() => {
-            setState({ ...state, confirmed: false, value: "" });
+            onReset();
           }}
         >
           No, volver
@@ -85,12 +102,13 @@ function UseState({ name }) {
       </React.Fragment>
     );
   } else {
+    /* Deleted and Confirmed */
     return (
       <React.Fragment>
         <h2>Eliminado con exito</h2>
         <button
           onClick={() => {
-            setState({ ...state, deleted: false, confirmed: false, value: "" });
+            onReset();
           }}
         >
           Recuperar Use State
