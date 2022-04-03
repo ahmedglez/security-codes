@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
-import { Loading } from "./components/Loading";
+import { Loading } from "./components/Loading/Loading";
 
 const SECURITY_CODE = "paradigma";
 
@@ -104,7 +104,7 @@ function UseState({ name }) {
     /* Deleted and Confirmed */
     return (
       <React.Fragment>
-        <h2>Eliminado con exito</h2>
+        <h3>Eliminado con exito!!!</h3>
         <button
           onClick={() => {
             onReset();

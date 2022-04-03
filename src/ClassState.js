@@ -13,11 +13,7 @@ class ClassState extends React.Component {
       loading: false,
     };
   }
-  /* 
-    componentDidMount() {
-      console.log("componentDidMount");
-    } */
-
+  
   componentDidUpdate() {
     console.log("Actualizacion");
     if (!!this.state.loading) {
@@ -30,6 +26,8 @@ class ClassState extends React.Component {
       }, 3000);
     }
   }
+
+  
 
   render() {
     console.log(this.state.value);

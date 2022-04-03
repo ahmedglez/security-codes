@@ -1,0 +1,70 @@
+.main-container {
+    margin: 0 auto;
+  margin-top: 125px;
+  width: 58%;
+  min-width: 383px;
+  height: 40%;  
+  border: 3px solid rgba(0, 0, 0, 0.671);
+  border-radius: 25px;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  font-size: 1.3em;
+  background-color: rgba(223, 208, 208, 0.411);
+  box-shadow: 5px 5px 5px  rgba(39, 37, 37, 0.513);
+
+
+}
+
+#main button{
+    border-radius: 15px;
+    margin-top: 20px;
+    font-size: 1.01em;
+    height: max-content; 
+    transition-duration: 250ms;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 35%;
+    font-size: 1.05em;
+    font-weight: 550;
+    cursor: pointer;
+    
+}
+#main .btn-danger{  
+    background-color: rgba(231, 28, 28, 0.842);   
+    color: rgba(255, 255, 255, 0.739);
+}
+
+
+
+#main .btn-danger:hover{
+    background-color: rgba(235, 8, 8, 0.904);
+    color: white;
+    
+}
+
+
+.button-container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-outline-secondary{
+    background-color: rgba(255, 255, 255, 0.781);   
+    color: rgba(37, 37, 37, 0.739);
+}
+
+.btn-outline-secondary:hover{
+    background-color: rgba(255, 255, 255, 0.972);   
+    color: rgb(37, 37, 37);
+}
+
+
+.btn-outline-success{
+    transition-duration: 350ms;
+}
+
+.btn-outline-success:hover{
+    background-color: rgb(67, 195, 67);
+    color: white;
+}
